@@ -6,8 +6,8 @@ if full_name.isalpha():
         if framework.isalpha():
             dbms = input("Введите субд: ")
             try:
-                w_experience = input("Введите свой опыт работы: ")
-                assert type(w_experience) is float, 'Опыт работы меньше чем требуется'
+                w_experience = float(input("Введите свой опыт работы: "))
+                assert w_experience > 0, 'Опыт работы не может быть отрицательным числом'
                 if w_experience >= 5:
                     if full_name.isalpha() and technology.isalpha() and framework.isalpha() and dbms.isalpha():
                         if technology.lower() == "python":
