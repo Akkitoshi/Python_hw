@@ -6,32 +6,36 @@ if full_name.isalpha():
         if framework.isalpha():
             dbms = input("Введите субд: ")
             try:
-                w_experience = float(input("Введите свой опыт работы: "))
-                if full_name.isalpha() and technology.isalpha() and framework.isalpha() and dbms.isalpha():
-                    if (technology == "Python") and (w_experience >= 5):
-                        if (framework == "Django" or framework == "flask") and (dbms == "postgres" or dbms == "mysql"):
+                w_experience = input("Введите свой опыт работы: ")
+                assert type(w_experience) is float, 'Опыт работы меньше чем требуется'
+                if w_experience >= 5:
+                    if full_name.isalpha() and technology.isalpha() and framework.isalpha() and dbms.isalpha():
+                        if technology.lower() == "python":
+                            if (framework.lower() in ("django", "flask")) and (dbms.lower() in ("postgres", "mysql")):
+                                print(full_name,
+                                      ", вы подходите на вакансию программист " + technology + " в компанию Медиасофт!")
+                            else:
+                                print(full_name,
+                                      ", вы не подходите на вакансию программист " + technology + " в компанию Медиасофт")
+                    else:
+                        print(full_name,
+                              ", вы не подходите на вакансию программист " + technology + " в компанию Медиасофт")
+
+                    if technology.lower() == "java":
+                        if (framework.lower() in ("spring", "spark")) and (dbms.lower() in ("oracle", "mssql")):
                             print(full_name,
                                   ", вы подходите на вакансию программист " + technology + " в компанию Медиасофт!")
                         else:
                             print(full_name,
                                   ", вы не подходите на вакансию программист " + technology + " в компанию Медиасофт")
-                else:
-                    print(full_name,
-                          ", вы не подходите на вакансию программист " + technology + " в компанию Медиасофт")
-
-                if (technology == "Java") and (w_experience >= 5):
-                    if (framework == "Spring" or framework == "Spark") and (dbms == "Oracle" or dbms == "MSSQL"):
-                        print(full_name,
-                              ", вы подходите на вакансию программист" + technology + "в компанию Медиасофт!")
                     else:
                         print(full_name,
                               ", вы не подходите на вакансию программист " + technology + " в компанию Медиасофт")
                 else:
                     print(full_name,
                           ", вы не подходите на вакансию программист " + technology + " в компанию Медиасофт")
-
             except ValueError:
-                print("Введены некорректные данные об опыте работы.")
+                print("Введены некорректные данные.")
         else:
             print("Введены некорректные данные.")
     else:
